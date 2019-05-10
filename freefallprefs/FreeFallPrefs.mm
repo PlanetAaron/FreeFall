@@ -7,21 +7,23 @@
 	- (id)specifiers{
 		// Load directory content
 		directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:@"/Library/FreeFall" error:NULL];
-	
+
+		//*screamWithRinger = [[UISwitch alloc] init];
+
 		if(_specifiers == nil) {
 			_specifiers=[[self loadSpecifiersFromPlistName:@"FreeFallPrefs" target:self] retain];
 		}
-	
+
 		return _specifiers;
 	}
-	
+
 	// Preview the sound before setting
 	- (void)previewAndSet:(id)value forSpecifier:(id)specifier{
 		// Sample sound and set
 		AudioServicesDisposeSystemSoundID(selectedSound);
 		AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:[NSString stringWithFormat:@"/Library/FreeFall/%@",value]],&selectedSound);
 		AudioServicesPlaySystemSound(selectedSound);
-		
+
 		[super setPreferenceValue:value specifier:specifier];
 	}
 
@@ -29,5 +31,5 @@
 	- (NSArray *)getValues:(id)target{
 		return [[NSArray arrayWithObjects:@"None",nil] arrayByAddingObjectsFromArray:directoryContent];
 	}
-	
+
 @end

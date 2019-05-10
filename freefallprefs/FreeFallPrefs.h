@@ -13,6 +13,8 @@
 	NSMutableDictionary *prefs;
 	NSArray *directoryContent;
 	SystemSoundID selectedSound;
+	
+	//UISwitch *screamWithRinger;
 }
 
 	- (NSArray *)getValues:(id)target;

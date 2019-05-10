@@ -8,11 +8,12 @@
 	int _ringerStateToken;
 	double fallSensitivity;
 	double stopSensitivity;
+	bool NoScreamWithRingerOff;
 	bool falling;
 	NSString *stopPref;
 	NSString *fallPref;
 }
-	
+
 	@property (nonatomic,retain) NSDictionary *prefs;
 	-(void)loadPrefs;
 	-(void)updateAccelData:(NSTimer *)timer;
