@@ -29,7 +29,7 @@ FreeFall *freeFallController;
 		if (prefs) [[self prefs] release];
 		if (timed) [timed invalidate];
 		if (manager) [manager stopAccelerometerUpdates];
-		
+
 		AudioServicesDisposeSystemSoundID(fallingSound);
 		AudioServicesDisposeSystemSoundID(stoppingSound);
 
@@ -40,17 +40,6 @@ FreeFall *freeFallController;
 
 		// Setup whether or not to scream if the ringer is off
 		NoScreamWithRingerOff = ([[self prefs] objectForKey:@"NoScreamWithRingerOff"] ? [[[self prefs] objectForKey:@"NoScreamWithRingerOff"] boolValue] : NoScreamWithRingerOff);
-		[[NSFileManager defaultManager] createFileAtPath:@"/var/mobile/freefall.log" contents:nil attributes:nil];
-		NSString* str = [NSString stringWithContentsOfFile:@"/var/mobile/freefall.log" encoding:NSUTF8StringEncoding error:nil];
-		if(NoScreamWithRingerOff)
-		{
-			str = [str stringByAppendingString:@"true\n"];
-		}
-		else
-		{
-			str = [str stringByAppendingString:@"false\n"];
-		}
-		[str writeToFile:@"/var/mobile/freefall.log" atomically:YES encoding:NSUTF8StringEncoding error:nil];
 
 
 
